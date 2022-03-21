@@ -165,6 +165,7 @@ static inline char *get_string_component_mutable(struct json_object *jso)
 	if (JC_STRING_C(jso)->len < 0)
 	{
 		/* Due to json_object_set_string(), we might have a pointer */
+		// TODO: Mit Ysf besprechen, wie wir damit umgehen ;)
 		return JC_STRING(jso)->c_string.pdata;
 	}
 	return JC_STRING(jso)->c_string.idata;
@@ -242,7 +243,7 @@ static int json_escape_str(struct printbuf *pb, const char *str, size_t len, int
 		printbuf_memappend(pb, str + start_offset, pos - start_offset);
 	return 0;
 }
-
+// bis hier hin sind wir gekommen, oberer Teil dient der Abhandlung der Excape-strings und korrekter übergabe in printbuf.
 /* reference counting */
 
 struct json_object *json_object_get(struct json_object *jso)
